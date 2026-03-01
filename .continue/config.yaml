@@ -1,0 +1,10 @@
+models:
+  - title: OpenAI GPT
+    provider: openai
+    model: gpt-5.2
+    apiKey: sk-REPLACE_WITH_YOUR_KEY
+
+embeddingsProvider:
+  provider: openai
+  model: text-embedding-3-large
+  apiKey: sk-REPLACE_WITH_YOUR_KEY

@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/devcontainers/python:3.11
+
+# Install system packages needed for robotics and vision
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    curl \
+    libgl1 \
+    libglib2.0-0 \
+    libopencv-dev \
+    python3-opencv \
+    udev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv (modern Python package manager)
+RUN pip install uv
+
+# Install PlatformIO for ESP32 firmware development
+RUN pip install platformio

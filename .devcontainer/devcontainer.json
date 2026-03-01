@@ -1,0 +1,26 @@
+{
+  "name": "ROV AI Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.cpptools",
+        "platformio.platformio-ide",
+        "continue.continue"
+      ]
+    }
+  },
+
+  "containerEnv": {
+    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+  },
+
+  "postCreateCommand": "uv sync",
+
+  "remoteUser": "vscode"
+}
