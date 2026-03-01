@@ -17,10 +17,11 @@
   },
 
   "containerEnv": {
-    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+    "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}",
+    "CONTINUE_GLOBAL_DIR": "/workspaces/rov_blue_light/.continue"
   },
 
-  "postCreateCommand": "uv sync",
+  "postCreateCommand": "uv sync && ./scripts/start-ollama.sh",
 
   "remoteUser": "vscode"
 }

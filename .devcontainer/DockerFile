@@ -1,4 +1,7 @@
-FROM mcr.microsoft.com/devcontainers/python:3.11
+FROM mcr.microsoft.com/devcontainers/python:1-3.11-bookworm
+
+# Remove yarn repository which has an expired GPG key
+RUN rm -f /etc/apt/sources.list.d/yarn.list
 
 # Install system packages needed for robotics and vision
 RUN apt-get update && apt-get install -y \
@@ -11,10 +14,14 @@ RUN apt-get update && apt-get install -y \
     libopencv-dev \
     python3-opencv \
     udev \
+    zstd \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv (modern Python package manager)
 RUN pip install uv
 
 # Install PlatformIO for ESP32 firmware development
+
+# Install Ollama to run local LLM models
+RUN curl -fsSL https://ollama.com/install.sh | bash
 RUN pip install platformio

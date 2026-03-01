@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Continue.dev
+.continue/sessions/
+.continue/index/
+.continue/logs/
+.continue/out/
+.continue/.env

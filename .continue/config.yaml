@@ -1,10 +1,30 @@
-models:
-  - title: OpenAI GPT
-    provider: openai
-    model: gpt-5.2
-    apiKey: sk-REPLACE_WITH_YOUR_KEY
+name: ROV Blue Light
+version: 1.0.0
+schema: v1
 
-embeddingsProvider:
-  provider: openai
-  model: text-embedding-3-large
-  apiKey: sk-REPLACE_WITH_YOUR_KEY
+models:
+  - name: Ollama Qwen2.5-Coder 7B (Local)
+    provider: ollama
+    model: qwen2.5-coder:7b
+    apiBase: http://localhost:11434
+    roles:
+      - autocomplete
+      - chat
+      - edit
+      - apply
+
+  - name: OpenAI GPT-5 Mini (Fallback)
+    provider: openai
+    model: gpt-5-mini
+    apiKey: ${{ secrets.GPT_API_KEY }}
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: Text Embeddings
+    provider: openai
+    model: text-embedding-3-large
+    apiKey: ${{ secrets.GPT_API_KEY }}
+    roles:
+      - embed
